@@ -1,32 +1,45 @@
 <header id="header" class="bg-secondary">
-  <nav class="container mx-auto flex justify-start items-center py-8 px-4">
+  <nav class="container mx-auto flex justify-between items-center py-8 px-4">
     <!-- App Name -->
     <a
-      class="text-3xl text-indigo-400 font-bold uppercase mr-4"
+      class="text-3xl text-indigo-400 font-bold uppercase mr-4 text-center flex flex-col"
       href="index.html"
-      >Game Clipper</a
     >
-
-    <div class="flex flex-grow items-center">
+      <span class="text-white text-xxlg">Game Clipper</span>
+    </a>
+    <div
+      class="flex items-center border-2 rounded-[2rem] p-2 fixed left-[50%] translate-x-[-50%] z-50 bg-[#010314]"
+    >
       <!-- Primary Navigation -->
-      <ul class="flex flex-row mt-1">
+      <ul class="flex flex-row mt-1 text-sm">
         <!-- Navigation Links -->
         <li>
-          <a class="px-2" href="#" (click)="openModal($event)"
+          <a
+            class="px-2 transition-all hover:text-[#9fa2b9]"
+            href="#"
+            (click)="openModal($event)"
             >Login / Register</a
           >
         </li>
         <li>
-          <a class="px-2" href="#">Manage</a>
+          <a class="px-2 transition-all hover:text-[#9fa2b9]" href="#"
+            >Manage</a
+          >
         </li>
         <li>
-          <a class="px-2" href="#">Upload</a>
+          <a class="px-2 transition-all hover:text-[#9fa2b9]" href="#"
+            >Upload</a
+          >
         </li>
         <li>
-          <a class="px-2" href="about.html">About</a>
+          <a class="px-2 transition-all hover:text-[#9fa2b9]" href="about.html"
+            >About</a
+          >
         </li>
       </ul>
       <!-- Language Switcher -->
+    </div>
+    <div>
       <ul class="flex flex-row ml-auto">
         <li>
           <a href="#">
