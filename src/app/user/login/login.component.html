@@ -1,25 +1,53 @@
-<form>
+<form #loginForm="ngForm" (ngSubmit)="login()">
   <!-- Email -->
   <div class="mb-3">
     <label class="inline-block mb-2">Email</label>
     <input
+      #email="ngModel"
       type="email"
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Enter Email"
+      name="email"
+      [(ngModel)]="credentials.email"
+      required
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
     />
+    <p
+      *ngIf="email.errors && email.touched && email.dirty"
+      class="text-white bg-red-500 my-2 p-2 rounded text-sm"
+    >
+      Email is Invalid
+    </p>
   </div>
   <!-- Password -->
   <div class="mb-3">
     <label class="inline-block mb-2">Password</label>
     <input
+      #password="ngModel"
       type="password"
       class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
       placeholder="Password"
+      name="password"
+      [(ngModel)]="credentials.password"
+      required
+      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
     />
+
+    <p class="text-white bg-green-600 my-2 p-2 rounded text-sm">
+      Password must be at least 8 characters long, contain at least one number
+      and one letter and one special character.
+    </p>
+    <p
+      *ngIf="password.errors && password.touched && password.dirty"
+      class="text-white bg-red-500 my-2 p-2 rounded text-sm"
+    >
+      Password is Invalid
+    </p>
   </div>
   <button
     type="submit"
-    class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500"
+    class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500 disabled:opacity-50 disabled:bg-indigo-400 disabled:cursor-not-allowed"
+    [disabled]="loginForm.invalid"
   >
     Submit
   </button>

@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" (ngSubmit)="(register)">
   <!-- Name -->
   <div class="mb-3">
     <label class="inline-block mb-2">Name</label>
@@ -8,7 +8,11 @@
   <!-- Email -->
   <div class="mb-3">
     <label class="inline-block mb-2">Email</label>
-    <app-input [control]="email" placeholder="Your Email"></app-input>
+    <app-input
+      [control]="email"
+      type="email"
+      placeholder="Your Email"
+    ></app-input>
   </div>
   <!-- Age -->
   <div class="mb-3">
@@ -23,6 +27,10 @@
       type="password"
       placeholder="Your Password"
     ></app-input>
+    <p class="text-white bg-green-600 my-2 p-2 rounded text-sm">
+      Password must be at least 8 characters long, contain at least one number
+      and one letter and one special character.
+    </p>
   </div>
   <!-- Confirm Password -->
   <div class="mb-3">
@@ -32,6 +40,10 @@
       type="password"
       placeholder="Confirm Password"
     ></app-input>
+    <p class="text-white bg-green-600 my-2 p-2 rounded text-sm">
+      Password must be at least 8 characters long, contain at least one number
+      and one letter and one special character.
+    </p>
   </div>
   <!-- Phone Number -->
   <div class="mb-3">
@@ -39,11 +51,13 @@
     <app-input
       [control]="phoneNumber"
       placeholder="Your Phone Number"
+      format="0000-000-000"
     ></app-input>
   </div>
   <button
     type="submit"
-    class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500"
+    class="block w-full bg-indigo-700 text-white py-1.5 px-3 rounded transition hover:bg-indigo-800 disabled:bg-gray-700"
+    [disabled]="registerForm.invalid"
   >
     Submit
   </button>

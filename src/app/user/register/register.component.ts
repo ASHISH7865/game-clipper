@@ -12,16 +12,16 @@ export class RegisterComponent {
   age = new FormControl('');
   password = new FormControl('', [
     Validators.required,
-    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
-    Validators.minLength(6),
+    Validators.pattern('^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$'),
   ]);
   confirmPassword = new FormControl('', [
     Validators.required,
-    Validators.minLength(6),
+    Validators.pattern('^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$'),
   ]);
   phoneNumber = new FormControl('', [
     Validators.required,
-    Validators.minLength(10),
+    Validators.minLength(12),
+    Validators.maxLength(12),
   ]);
 
   registerForm = new FormGroup({
@@ -32,4 +32,8 @@ export class RegisterComponent {
     confirmPassword: this.confirmPassword,
     phoneNumber: this.phoneNumber,
   });
+
+  register() {
+    console.log('You are Registered');
+  }
 }
